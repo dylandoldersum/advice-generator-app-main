@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="stylesheet" href="./css/stylesheet.css" />
+    <title>Frontend Mentor | Advice generator app</title>
+    <script>
+      const getAdvice = () => {
+        $.get("https://api.adviceslip.com/advice").then((advice) => {
+          const obj = JSON.parse(advice);
+          $("#advice-title").html("Advice #" + obj.slip.id);
+          $("#advice-content").html('"' + obj.slip.advice + '"');
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="advice-box">
+        <div class="advice-box-header">
+          <h3 id="advice-title"></h3>
+        </div>
+        <div class="advice-box-content">
+          <h1 id="advice-content"></h1>
+        </div>
+        <img
+          class="desktop-divider"
+          src="./images/pattern-divider-desktop.svg"
+        />
+        <img class="mobile-divider" src="./images/pattern-divider-mobile.svg" />
+        <a class="random-button" onclick="getAdvice()"
+          ><img src="./images/icon-dice.svg"
+        /></a>
+      </div>
+    </div>
+    <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Dylan Doldersum</a>.
+    </div>
+  </body>
+</html>
