@@ -18,6 +18,9 @@
     <link rel="stylesheet" href="./css/stylesheet.css" />
     <title>Frontend Mentor | Advice generator app</title>
     <script>
+      $(function () {
+        getAdvice();
+      });
       const getAdvice = () => {
         $.get("https://api.adviceslip.com/advice").then((advice) => {
           const obj = JSON.parse(advice);
